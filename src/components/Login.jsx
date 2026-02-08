@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
@@ -9,12 +9,19 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/Card";
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { login } = useAuth();
+  const usernameRef = useRef(null);
+
+  useEffect(() => {
+    usernameRef.current?.focus();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,6 +66,7 @@ const Login = () => {
                   Username
                 </label>
                 <Input
+                  ref={usernameRef}
                   id="username"
                   type="text"
                   value={username}
@@ -76,15 +84,30 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  required
-                  disabled={isLoading}
-                />
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    required
+                    disabled={isLoading}
+                    className="pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 focus:outline-none"
+                    disabled={isLoading}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
               </div>
 
               <Button
