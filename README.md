@@ -2,18 +2,6 @@
 
 A responsive web application for ranking dishes built with React, Vite, Tailwind CSS, and shadcn/ui components.
 
-## 🚀 Quick Start
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Open http://localhost:5174 in your browser
-```
-
 ## 📱 Features
 
 - **User Authentication**: Login with static user accounts
