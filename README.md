@@ -45,6 +45,58 @@ npm run dev
 
 ---
 
+## Installation & Setup
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Steps
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd aman-chandra-react-dishpoll
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:5173` (or the URL shown in your terminal)
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Application Flow
+
+1. **Login**: Users authenticate with username/password
+2. **Dashboard**: After login, users see a tabbed interface
+3. **Voting Tab**: Browse dishes and rank top 3 choices
+4. **Results Tab**: View overall rankings and personal selections
+
 ## Problem Statement
 
 Make a small react app for ranking dishes. Multiple users should be able to login into the app and vote for their favourite dishes and see the results of the poll.
